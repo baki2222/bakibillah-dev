@@ -77,7 +77,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
             <SectionLabel n="01">Selected work</SectionLabel>
             <h2 className="mt-4 font-serif text-5xl sm:text-6xl">Live projects</h2>
-            <p className="mt-4 max-w-xl text-paper/65">Real, working applications — not mockups. Each one runs on its own subdomain.</p>
+            <p className="mt-4 max-w-xl text-paper/65">Real, working applications — not mockups. Web apps run on their own subdomains; desktop apps ship as a Windows installer.</p>
 
             <div className="mt-14 space-y-6">
               {PROJECTS.map((p, i) => (
@@ -87,7 +87,7 @@ export default function Home() {
                 >
                   <div>
                     <div className="flex items-center gap-3 font-mono text-xs text-muted">
-                      <span style={{ color: p.accent }}>●</span> {String(i + 1).padStart(2, "0")} — {p.live.replace("https://", "")}
+                      <span style={{ color: p.accent }}>●</span> {String(i + 1).padStart(2, "0")} — {p.live.includes("github.com") ? "Windows desktop app" : p.live.replace("https://", "")}
                     </div>
                     <h3 className="mt-4 font-serif text-4xl sm:text-5xl">{p.name}</h3>
                     <p className="mt-2 text-lg text-paper/80">{p.tagline}</p>
@@ -100,7 +100,7 @@ export default function Home() {
                         className="rounded-full px-5 py-2.5 text-sm font-semibold text-ink"
                         style={{ background: p.accent }}
                       >
-                        Open live demo <Arrow />
+                        {p.liveLabel ?? "Open live demo"} <Arrow />
                       </a>
                       <a
                         href={p.source}

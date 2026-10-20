@@ -9,6 +9,7 @@ export type Project = {
   highlights: string[];
   stack: string[];
   live: string;
+  liveLabel?: string;
   source: string;
   accent: string;
 };
@@ -61,6 +62,23 @@ export const PROJECTS: Project[] = [
     live: "https://launchkit.bakibillah.dev",
     source: "https://github.com/baki2222/launchkit",
     accent: "#fb923c",
+  },
+  {
+    slug: "printscale",
+    name: "PrintScale Studio",
+    tagline: "An open-source Windows app that upscales images for print",
+    description:
+      "A desktop app for print-on-demand sellers and designers. It enlarges artwork and photos with Real-ESRGAN AI models or faithful Lanczos scaling, then exports print-ready PNG or JPEG files at 300–600 DPI with correct metadata, colour profiles and clean transparent edges. Runs fully offline.",
+    highlights: [
+      "Real-ESRGAN models via ONNX Runtime, GPU-accelerated with DirectML, CPU fallback",
+      "Exact print sizing (inches/cm/pixels) with verified DPI metadata on every export",
+      "Transparent PNG edge handling, tiled seam-free inference, and an automated test suite",
+    ],
+    stack: ["Python", "PySide6 / Qt 6", "ONNX Runtime", "DirectML", "Pillow", "PyInstaller"],
+    live: "https://github.com/baki2222/printscale-studio/releases/latest",
+    liveLabel: "Download for Windows",
+    source: "https://github.com/baki2222/printscale-studio",
+    accent: "#a78bfa",
   },
 ];
 
