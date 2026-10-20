@@ -55,7 +55,7 @@ export default function Home() {
           </h1>
           <p className="rise mt-8 max-w-2xl text-lg text-paper/75 leading-relaxed" style={{ animationDelay: "160ms" }}>
             LLM agents, RAG chatbots, and full-stack SaaS apps — from first idea to deployed, production-ready code. Every
-            project below is live: click it, try it, read the source.
+            project below is a real, shipped product you can open and use today.
           </p>
           <div className="rise mt-10 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
             <a href="#work" className="rounded-full bg-paper px-6 py-3 font-semibold text-ink hover:bg-white">
@@ -77,7 +77,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
             <SectionLabel n="01">Selected work</SectionLabel>
             <h2 className="mt-4 font-serif text-5xl sm:text-6xl">Live projects</h2>
-            <p className="mt-4 max-w-xl text-paper/65">Real, working applications — not mockups. Web apps run on their own subdomains; desktop apps ship as a Windows installer.</p>
+            <p className="mt-4 max-w-xl text-paper/65">Real, shipped products — not mockups. Web apps run on their own domains; the desktop app ships as a Windows installer.</p>
 
             <div className="mt-14 space-y-6">
               {PROJECTS.map((p, i) => (
