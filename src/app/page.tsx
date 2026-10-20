@@ -102,14 +102,16 @@ export default function Home() {
                       >
                         {p.liveLabel ?? "Open live demo"} <Arrow />
                       </a>
-                      <a
-                        href={p.source}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold hover:border-paper"
-                      >
-                        Source code <Arrow />
-                      </a>
+                      {p.source && (
+                        <a
+                          href={p.source}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold hover:border-paper"
+                        >
+                          Source code <Arrow />
+                        </a>
+                      )}
                     </div>
                   </div>
                   <div className="flex flex-col justify-between gap-8">

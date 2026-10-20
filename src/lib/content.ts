@@ -80,6 +80,70 @@ export const PROJECTS: Project[] = [
     source: "https://github.com/baki2222/printscale-studio",
     accent: "#a78bfa",
   },
+  {
+    slug: "pdfxyz",
+    name: "pdf.xyz",
+    tagline: "Every PDF tool, private by design",
+    description:
+      "A PDF platform with 50 tools: merge, split, compress, convert, sign and AI. Most tools run entirely in the browser, so files never leave the device; heavier jobs go to clearly labelled secure workers instead of being faked client-side.",
+    highlights: [
+      "pdf-lib and pdf.js processing in the browser — no upload for most tools",
+      "Next.js 16 App Router, React 19 and strict TypeScript",
+      "Vitest unit tests, Playwright end-to-end smoke tests and CI",
+    ],
+    stack: ["Next.js 16", "React 19", "TypeScript", "pdf-lib", "pdf.js", "Tailwind v4"],
+    live: "https://pdf.xyz",
+    source: "",
+    accent: "#38bdf8",
+  },
+  {
+    slug: "innoreviews",
+    name: "InnoReviews",
+    tagline: "Tech specs, benchmarks and head-to-head comparisons",
+    description:
+      "A data platform covering 2,800+ phones, laptops, tablets, chipsets, CPUs and GPUs. Full spec sheets, real benchmarks, a transparent scoring engine, any-pair VS pages, rankings, instant search and a complete admin panel.",
+    highlights: [
+      "Schema-driven: adding a field updates the UI, compare engine, scoring and admin forms",
+      "Transparent scoring with a public methodology page that renders the live weights",
+      "Admin editor with live score preview, drafts and import/export backups",
+    ],
+    stack: ["Next.js 15", "React 19", "TypeScript", "Prisma", "PostgreSQL", "Tailwind v4"],
+    live: "https://innoreviews.com",
+    source: "",
+    accent: "#818cf8",
+  },
+  {
+    slug: "tuberepeat",
+    name: "TubeRepeat",
+    tagline: "A loop pedal for YouTube practice",
+    description:
+      "Mark an A and a B point on any YouTube video and repeat that part at any speed. Built for musicians, dancers and language learners, with speed ramps, rest between passes, saved sections and shareable loop links.",
+    highlights: [
+      "A-B loops precise to a hundredth of a second, 0.25×–2× speed with pitch preserved",
+      "Speed ramp, lead-in, pass limits and named sections per video",
+      "Installable PWA with full keyboard control; all data stays in the browser",
+    ],
+    stack: ["TypeScript", "YouTube IFrame API", "PWA", "CSS"],
+    live: "https://tuberepeat.app",
+    source: "",
+    accent: "#f59e0b",
+  },
+  {
+    slug: "pomostride",
+    name: "Pomostride",
+    tagline: "A local-first Pomodoro focus timer",
+    description:
+      "A focus timer with task planning and honest insights. No account, no server and no tracking: tasks, history and settings live on the device, and the app works offline as an installable PWA.",
+    highlights: [
+      "Wall-clock timing, so a sleeping tab never loses focus time",
+      "Domain logic separated from React state and presentation, covered by Vitest tests",
+      "Light, dark and system themes from hand-authored design tokens",
+    ],
+    stack: ["React 19", "TypeScript", "Vite", "PWA", "Vitest"],
+    live: "https://pomostride.com",
+    source: "",
+    accent: "#f87171",
+  },
 ];
 
 export const SERVICES = [
