@@ -1,231 +1,314 @@
-import { GITHUB_URL, PROCESS, PROJECTS, SERVICES, STACK, UPWORK_URL } from "@/lib/content";
+import CopyEmail from "@/components/CopyEmail";
+import Effects from "@/components/Effects";
+import LocalTime from "@/components/LocalTime";
+import { EMAIL, MARQUEE, PROCESS, PROJECTS, SERVICES, STACK, STATS } from "@/lib/content";
 
-function Arrow() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="inline-block">
-      <path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function SectionLabel({ n, children }: { n: string; children: React.ReactNode }) {
-  return (
-    <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
-      <span className="text-signal">{n}</span> / {children}
-    </p>
-  );
-}
+const ROTOR = ["ship.", "scale.", "last."];
+const ROMAN = ["i.", "ii.", "iii."];
 
 export default function Home() {
   return (
-    <div className="grain">
-      {/* Nav */}
-      <header className="sticky top-0 z-40 border-b border-line/70 bg-ink/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 py-4">
-          <a href="#top" className="font-serif text-2xl leading-none">
-            Baki Billah<span className="text-signal">.</span>
+    <>
+      <Effects />
+      <div id="rail" aria-hidden />
+      <div id="cur" aria-hidden />
+      <div id="cur-ring" aria-hidden />
+      <div id="peek" aria-hidden>
+        <div className="frame" />
+      </div>
+
+      <nav className="site-nav" id="nav">
+        <div className="wrap nav-inner">
+          <a className="wordmark" href="#top">
+            bakibillah<em>.</em>dev
           </a>
-          <nav className="hidden sm:flex items-center gap-7 text-sm text-muted">
-            <a href="#work" className="hover:text-paper">Work</a>
-            <a href="#services" className="hover:text-paper">Services</a>
-            <a href="#process" className="hover:text-paper">Process</a>
-            <a href="#contact" className="hover:text-paper">Contact</a>
-          </nav>
-          <a
-            href={UPWORK_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-signal px-4 py-2 text-sm font-semibold text-ink hover:brightness-95"
-          >
-            Hire me
-          </a>
+          <div className="nav-links">
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#contact" className="nav-cta">
+              Start a project
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <header className="hero" id="top">
+        <div className="ghost-words" aria-hidden>
+          <span className="g1" data-par="-14">
+            agents
+          </span>
+          <span className="g2" data-par="9">
+            ship.
+          </span>
+        </div>
+        <div className="wrap hero-body">
+          <div className="avail rise">
+            <span className="dot" />
+            Available for new projects
+          </div>
+          <h1 className="display" id="hero-h1">
+            <span className="ln">
+              <span style={{ "--d": "0ms" } as React.CSSProperties}>I build AI</span>
+            </span>
+            <span className="ln">
+              <span style={{ "--d": "120ms" } as React.CSSProperties}>products that</span>
+            </span>
+            <span className="ln">
+              <span style={{ "--d": "240ms" } as React.CSSProperties}>
+                <em>
+                  actually{" "}
+                  <span className="rotor" id="rotor">
+                    {ROTOR.map((w, i) => (
+                      <span key={w} className={i === 0 ? "rw on" : "rw"} aria-hidden={i !== 0}>
+                        {w}
+                      </span>
+                    ))}
+                    <span className="ph" aria-hidden>
+                      {ROTOR[0]}
+                    </span>
+                  </span>
+                </em>
+              </span>
+            </span>
+          </h1>
+          <div className="hero-grid">
+            <div className="rise">
+              <p className="hero-lede">
+                LLM agents, RAG chatbots, and full-stack SaaS apps — from first idea to deployed, production-ready
+                code. <strong>Every project below is a real, shipped product you can open and use today.</strong>
+              </p>
+              <div className="hero-actions">
+                <a className="btn" href="#contact">
+                  Start a project
+                </a>
+                <a className="btn line" href="#work">
+                  See the work ↓
+                </a>
+              </div>
+            </div>
+            <div className="hero-meta rise">
+              <div>
+                <span>Role</span>
+                <b>AI Engineer</b>
+              </div>
+              <div>
+                <span>Also</span>
+                <b>Full-Stack Dev</b>
+              </div>
+              <div>
+                <span>Based</span>
+                <b>Bangladesh · Remote</b>
+              </div>
+              <div>
+                <span>Local time</span>
+                <b className="live">
+                  <LocalTime />
+                </b>
+              </div>
+              <div>
+                <span>Stack</span>
+                <b>Next.js · Python</b>
+              </div>
+            </div>
+          </div>
+          <div className="stats">
+            {STATS.map((s) => (
+              <div key={s.label} className="stat rise">
+                <b>
+                  <i className="count" data-to={s.value}>
+                    {s.value.toLocaleString("en-US")}
+                  </i>
+                  {s.suffix}
+                </b>
+                <span>{s.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </header>
 
-      <main id="top">
-        {/* Hero */}
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
-          <p className="rise font-mono text-xs uppercase tracking-[0.2em] text-muted">
-            AI Engineer & Full-Stack Developer · Available for new projects
-          </p>
-          <h1 className="rise mt-6 font-serif text-[clamp(3rem,9vw,7.5rem)] leading-[0.95] tracking-tight" style={{ animationDelay: "80ms" }}>
-            I build AI products
-            <br />
-            that <em className="text-signal">actually ship.</em>
-          </h1>
-          <p className="rise mt-8 max-w-2xl text-lg text-paper/75 leading-relaxed" style={{ animationDelay: "160ms" }}>
-            LLM agents, RAG chatbots, and full-stack SaaS apps — from first idea to deployed, production-ready code. Every
-            project below is a real, shipped product you can open and use today.
-          </p>
-          <div className="rise mt-10 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
-            <a href="#work" className="rounded-full bg-paper px-6 py-3 font-semibold text-ink hover:bg-white">
-              See live projects
-            </a>
-            <a
-              href={UPWORK_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-paper/25 px-6 py-3 font-semibold hover:border-paper"
-            >
-              Work with me on Upwork <Arrow />
-            </a>
-          </div>
-        </section>
+      <div className="marquee" aria-hidden>
+        <div className="mq-track">
+          {[...MARQUEE, ...MARQUEE].map((m, i) => (
+            <span key={i} className={i % 2 ? "out" : undefined}>
+              {m}
+            </span>
+          ))}
+        </div>
+      </div>
 
-        {/* Work */}
-        <section id="work" className="border-t border-line">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-            <SectionLabel n="01">Selected work</SectionLabel>
-            <h2 className="mt-4 font-serif text-5xl sm:text-6xl">Live projects</h2>
-            <p className="mt-4 max-w-xl text-paper/65">Real, shipped products — not mockups. Web apps run on their own domains; the desktop app ships as a Windows installer.</p>
-
-            <div className="mt-14 space-y-6">
-              {PROJECTS.map((p, i) => (
-                <article
-                  key={p.slug}
-                  className="group grid gap-8 rounded-3xl border border-line bg-white/[0.02] p-6 sm:p-10 lg:grid-cols-[1.1fr_1fr] hover:border-paper/25 transition-colors"
-                >
-                  <div>
-                    <div className="flex items-center gap-3 font-mono text-xs text-muted">
-                      <span style={{ color: p.accent }}>●</span> {String(i + 1).padStart(2, "0")} — {p.live.includes("github.com") ? "Windows desktop app" : p.live.replace("https://", "")}
-                    </div>
-                    <h3 className="mt-4 font-serif text-4xl sm:text-5xl">{p.name}</h3>
-                    <p className="mt-2 text-lg text-paper/80">{p.tagline}</p>
-                    <p className="mt-5 text-paper/60 leading-relaxed">{p.description}</p>
-                    <div className="mt-8 flex flex-wrap gap-3">
-                      <a
-                        href={p.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-full px-5 py-2.5 text-sm font-semibold text-ink"
-                        style={{ background: p.accent }}
-                      >
-                        {p.liveLabel ?? "Open live demo"} <Arrow />
-                      </a>
-                      {p.source && (
-                        <a
-                          href={p.source}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="rounded-full border border-paper/20 px-5 py-2.5 text-sm font-semibold hover:border-paper"
-                        >
-                          Source code <Arrow />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-between gap-8">
-                    <ul className="space-y-4">
-                      {p.highlights.map((h) => (
-                        <li key={h} className="flex gap-3 text-paper/80">
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: p.accent }} />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="flex flex-wrap gap-2">
-                      {p.stack.map((s) => (
-                        <span key={s} className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-muted">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section id="services" className="border-t border-line">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-            <SectionLabel n="02">Services</SectionLabel>
-            <h2 className="mt-4 font-serif text-5xl sm:text-6xl">What I build</h2>
-            <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-3">
-              {SERVICES.map((s) => (
-                <div key={s.title} className="bg-ink p-8">
-                  <h3 className="font-serif text-3xl">{s.title}</h3>
-                  <p className="mt-4 text-paper/65 leading-relaxed">{s.body}</p>
-                  <ul className="mt-6 space-y-2 font-mono text-xs text-muted">
-                    {s.points.map((pt) => (
-                      <li key={pt}>→ {pt}</li>
-                    ))}
-                  </ul>
+      <main>
+        <section className="sec" id="work">
+          <div className="wrap">
+            <div className="two-col">
+              <div className="col-sticky rise">
+                <div className="sec-head">
+                  <span className="sec-num">01</span>
+                  <span className="sec-kicker">Selected work</span>
                 </div>
-              ))}
-            </div>
+                <h2 className="sectitle">
+                  Live <em>projects</em>
+                </h2>
+                <p className="sec-note">
+                  Real, shipped products — not mockups. Hover any entry to peek inside. Web apps run on their own
+                  domains; the desktop app ships as a Windows installer.
+                </p>
+              </div>
 
-            <div className="mt-14">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">Tools I work with</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {STACK.map((t) => (
-                  <span key={t} className="rounded-full border border-line px-3.5 py-1.5 text-sm text-paper/80">
-                    {t}
-                  </span>
+              <div className="work-list">
+                {PROJECTS.map((p, i) => (
+                  <a
+                    key={p.slug}
+                    className="work-item rise"
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener"
+                    data-shot={p.shot}
+                  >
+                    <div className="work-idx">N° {String(i + 1).padStart(2, "0")}</div>
+                    <div>
+                      <div className="work-title-row">
+                        <h3 className="work-title">{p.name}</h3>
+                        <span className="work-tag">{p.tag}</span>
+                      </div>
+                      <p className="work-sub">{p.tagline}</p>
+                      <p className="work-desc">{p.description}</p>
+                      <ul className="work-bullets">
+                        {p.highlights.map((h) => (
+                          <li key={h}>{h}</li>
+                        ))}
+                      </ul>
+                      <div className="chips">
+                        {p.stack.map((s) => (
+                          <span key={s}>{s}</span>
+                        ))}
+                      </div>
+                      <div className="work-shot">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={p.shot} alt={`${p.name} screenshot`} loading="lazy" width={1200} height={750} />
+                      </div>
+                    </div>
+                    <span className="work-arrow" aria-hidden>
+                      ↗
+                    </span>
+                  </a>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Process */}
-        <section id="process" className="border-t border-line">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-            <SectionLabel n="03">Process</SectionLabel>
-            <h2 className="mt-4 font-serif text-5xl sm:text-6xl">How we&apos;ll work</h2>
-            <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="sec" id="services">
+          <div className="wrap">
+            <div className="sec-head rise">
+              <span className="sec-num">02</span>
+              <span className="sec-kicker">Services</span>
+            </div>
+            <h2 className="sectitle">
+              <span className="ln">
+                <span>
+                  What I <em>build</em>
+                </span>
+              </span>
+            </h2>
+
+            <div className="services">
+              {SERVICES.map((s, i) => (
+                <div key={s.title} className="service-row rise">
+                  <div className="service-no">{ROMAN[i]}</div>
+                  <h3 className="service-name">{s.title}</h3>
+                  <div className="service-body">
+                    <p>{s.body}</p>
+                    <ul className="service-list">
+                      {s.points.map((pt) => (
+                        <li key={pt}>{pt}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="toolbelt rise">
+              <h3>Tools I work with</h3>
+              <div className="chips">
+                {STACK.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="sec" id="process">
+          <div className="wrap">
+            <div className="sec-head rise">
+              <span className="sec-num">03</span>
+              <span className="sec-kicker">Process</span>
+            </div>
+            <h2 className="sectitle">
+              <span className="ln">
+                <span>
+                  How we&rsquo;ll <em>work</em>
+                </span>
+              </span>
+            </h2>
+
+            <div className="process-track" id="ptrack">
+              <div className="track-line">
+                <i id="pfill" />
+              </div>
               {PROCESS.map((p) => (
-                <div key={p.step} className="border-t border-paper/20 pt-6">
-                  <p className="font-mono text-sm text-signal">{p.step}</p>
-                  <h3 className="mt-3 font-serif text-3xl">{p.title}</h3>
-                  <p className="mt-3 text-paper/65 leading-relaxed">{p.body}</p>
+                <div key={p.step} className="step rise">
+                  <span className="step-dot" />
+                  <div className="step-no">STEP {p.step}</div>
+                  <h3>{p.title}</h3>
+                  <p>{p.body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Contact */}
-        <section id="contact" className="border-t border-line">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-24 sm:py-32">
-            <SectionLabel n="04">Contact</SectionLabel>
-            <h2 className="mt-6 font-serif text-[clamp(2.75rem,7vw,6rem)] leading-[0.95]">
-              Have a project in mind?
-              <br />
-              <em className="text-signal">Let&apos;s talk.</em>
-            </h2>
-            <p className="mt-8 max-w-xl text-lg text-paper/70">
-              Send me a short description of what you want to build. I&apos;ll reply with a clear plan and an estimate — free.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href={UPWORK_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-signal px-7 py-3.5 font-semibold text-ink hover:brightness-95"
-              >
-                Message me on Upwork <Arrow />
-              </a>
-              <a
-                href={GITHUB_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-paper/25 px-7 py-3.5 font-semibold hover:border-paper"
-              >
-                GitHub <Arrow />
-              </a>
+        <section className="sec" id="contact">
+          <span className="ghost-c" aria-hidden data-par="6">
+            let&rsquo;s talk
+          </span>
+          <div className="wrap contact-inner">
+            <div className="sec-head rise">
+              <span className="sec-num">04</span>
+              <span className="sec-kicker">Contact</span>
             </div>
+            <h2 className="contact-big">
+              <span className="ln">
+                <span>Have a project</span>
+              </span>
+              <span className="ln">
+                <span style={{ "--d": "140ms" } as React.CSSProperties}>
+                  in mind? <em>Let&rsquo;s talk.</em>
+                </span>
+              </span>
+            </h2>
+            <p className="contact-sub rise">
+              Send me a short description of what you want to build. I&rsquo;ll reply with a clear plan and an
+              estimate — free.
+            </p>
+            <div className="contact-actions rise">
+              <a className="btn contact-email" id="magnet" href={`mailto:${EMAIL}`} data-scramble={EMAIL}>
+                {EMAIL}
+              </a>
+              <CopyEmail email={EMAIL} />
+            </div>
+            <p className="contact-note rise">Bangladesh · UTC+6 · Remote</p>
+
+            <footer className="contact-foot">
+              <span>© {new Date().getFullYear()} bakibillah.dev — AI Engineer &amp; Full-Stack Developer</span>
+              <a href="#top">Back to top ↑</a>
+            </footer>
           </div>
         </section>
       </main>
-
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 sm:px-6 py-8 text-sm text-muted sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} Baki Billah</p>
-          <p className="font-mono text-xs">Built with Next.js · Hosted on Vercel</p>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }

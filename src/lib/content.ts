@@ -1,23 +1,22 @@
-export const UPWORK_URL = "https://www.upwork.com/freelancers/~01031a8a772a0fd09c";
-export const GITHUB_URL = "https://github.com/baki2222";
+export const EMAIL = "hello@bakibillah.dev";
 
 export type Project = {
   slug: string;
   name: string;
+  tag: string;
   tagline: string;
   description: string;
   highlights: string[];
   stack: string[];
-  live: string;
-  liveLabel?: string;
-  source: string;
-  accent: string;
+  href: string;
+  shot: string;
 };
 
 export const PROJECTS: Project[] = [
   {
     slug: "pdfxyz",
     name: "pdf.xyz",
+    tag: "pdf.xyz",
     tagline: "Every PDF tool, private by design",
     description:
       "A PDF platform with 50 tools: merge, split, compress, convert, sign and AI. Most tools run entirely in the browser, so files never leave the device; heavier jobs go to clearly labelled secure workers instead of being faked client-side.",
@@ -27,14 +26,13 @@ export const PROJECTS: Project[] = [
       "Vitest unit tests, Playwright end-to-end smoke tests and CI",
     ],
     stack: ["Next.js 16", "React 19", "TypeScript", "pdf-lib", "pdf.js", "Tailwind v4"],
-    live: "https://pdf.xyz",
-    liveLabel: "Visit site",
-    source: "",
-    accent: "#38bdf8",
+    href: "https://pdf.xyz",
+    shot: "/shots/pdfxyz.webp",
   },
   {
     slug: "innoreviews",
     name: "InnoReviews",
+    tag: "innoreviews.com",
     tagline: "Tech specs, benchmarks and head-to-head comparisons",
     description:
       "A data platform covering 2,800+ phones, laptops, tablets, chipsets, CPUs and GPUs. Full spec sheets, real benchmarks, a transparent scoring engine, any-pair VS pages, rankings, instant search and a complete admin panel.",
@@ -44,14 +42,13 @@ export const PROJECTS: Project[] = [
       "Admin editor with live score preview, drafts and import/export backups",
     ],
     stack: ["Next.js 15", "React 19", "TypeScript", "Prisma", "PostgreSQL", "Tailwind v4"],
-    live: "https://innoreviews.com",
-    liveLabel: "Visit site",
-    source: "",
-    accent: "#818cf8",
+    href: "https://innoreviews.com",
+    shot: "/shots/innoreviews.webp",
   },
   {
     slug: "printscale",
     name: "PrintScale Studio",
+    tag: "Windows app · open source",
     tagline: "An open-source Windows app that upscales images for print",
     description:
       "A desktop app for print-on-demand sellers and designers. It enlarges artwork and photos with Real-ESRGAN AI models or faithful Lanczos scaling, then exports print-ready PNG or JPEG files at 300–600 DPI with correct metadata, colour profiles and clean transparent edges. Runs fully offline.",
@@ -61,31 +58,29 @@ export const PROJECTS: Project[] = [
       "Transparent PNG edge handling, tiled seam-free inference, and an automated test suite",
     ],
     stack: ["Python", "PySide6 / Qt 6", "ONNX Runtime", "DirectML", "Pillow", "PyInstaller"],
-    live: "https://github.com/baki2222/printscale-studio/releases/latest",
-    liveLabel: "Download for Windows",
-    source: "https://github.com/baki2222/printscale-studio",
-    accent: "#a78bfa",
+    href: "https://github.com/baki2222/printscale-studio",
+    shot: "/shots/printscale.webp",
   },
   {
     slug: "tuberepeat",
     name: "TubeRepeat",
+    tag: "tuberepeat.app",
     tagline: "A loop pedal for YouTube practice",
     description:
       "Mark an A and a B point on any YouTube video and repeat that part at any speed. Built for musicians, dancers and language learners, with speed ramps, rest between passes, saved sections and shareable loop links.",
     highlights: [
-      "A-B loops precise to a hundredth of a second, 0.25×–2× speed with pitch preserved",
+      "A–B loops precise to a hundredth of a second, 0.25×–2× speed with pitch preserved",
       "Speed ramp, lead-in, pass limits and named sections per video",
       "Installable PWA with full keyboard control; all data stays in the browser",
     ],
     stack: ["TypeScript", "YouTube IFrame API", "PWA", "CSS"],
-    live: "https://tuberepeat.app",
-    liveLabel: "Visit site",
-    source: "",
-    accent: "#f59e0b",
+    href: "https://tuberepeat.app",
+    shot: "/shots/tuberepeat.webp",
   },
   {
     slug: "pomostride",
     name: "Pomostride",
+    tag: "pomostride.com",
     tagline: "A local-first Pomodoro focus timer",
     description:
       "A focus timer with task planning and honest insights. No account, no server and no tracking: tasks, history and settings live on the device, and the app works offline as an installable PWA.",
@@ -95,11 +90,27 @@ export const PROJECTS: Project[] = [
       "Light, dark and system themes from hand-authored design tokens",
     ],
     stack: ["React 19", "TypeScript", "Vite", "PWA", "Vitest"],
-    live: "https://pomostride.com",
-    liveLabel: "Visit site",
-    source: "",
-    accent: "#f87171",
+    href: "https://pomostride.com",
+    shot: "/shots/pomostride.webp",
   },
+];
+
+export const STATS = [
+  { value: 5, suffix: "", label: "Live products" },
+  { value: 50, suffix: "+", label: "PDF tools shipped" },
+  { value: 2800, suffix: "+", label: "Devices compared" },
+  { value: 0, suffix: "", label: "Mockups, ever" },
+];
+
+export const MARQUEE = [
+  "AI Agents",
+  "RAG Pipelines",
+  "SaaS MVPs",
+  "LLM Evals",
+  "Automation",
+  "MCP Servers",
+  "Next.js 16",
+  "Python · FastAPI",
 ];
 
 export const SERVICES = [
